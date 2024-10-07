@@ -6,10 +6,11 @@ import routes from './app/routes';
 
 import cookieParser from 'cookie-parser';
 import sendResponse from './shared/sendResponse';
+import swaggerSetup from './swagger';
 
 const app: Application = express();
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://localhost:5000', credentials: true }));
 app.use(cookieParser());
 
 //parser
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // app.use('/api/v1/users/', UserRoutes);
 // app.use('/api/v1/academic-semesters', AcademicSemesterRoutes);
+
 app.use('/api/v1', routes);
 
 // Setup Swagger
