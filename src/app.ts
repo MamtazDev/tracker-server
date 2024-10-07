@@ -20,6 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/api/v1/academic-semesters', AcademicSemesterRoutes);
 app.use('/api/v1', routes);
 
+// Setup Swagger
+swaggerSetup(app);
+
 
 //Testing
 app.get('/', async (req: Request, res: Response, next: NextFunction) => {
