@@ -2,12 +2,8 @@ import bcrypt from 'bcrypt';
 import httpStatus from 'http-status';
 import { JwtPayload, Secret } from 'jsonwebtoken';
 import config from '../../../config';
-import { ENUM_USER_ROLE } from '../../../enums/user';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
-import { Admin } from '../admin/admin.model';
-import { Faculty } from '../faculty/faculty.model';
-import { Student } from '../student/student.model';
 import { User } from '../user/user.model';
 import {
   IChangePassword,
@@ -154,32 +150,23 @@ const forgotPass = async (payload: { id: string }) => {
   }
 
   let profile = null;
-  if (user.role === ENUM_USER_ROLE.ADMIN) {
-    profile = await Admin.findOne({ id: user.id })
-  }
-  else if (user.role === ENUM_USER_ROLE.FACULTY) {
-    profile = await Faculty.findOne({ id: user.id })
-  }
-  else if (user.role === ENUM_USER_ROLE.STUDENT) {
-    profile = await Student.findOne({ id: user.id })
-  }
+ 
+ 
 
   if (!profile) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Pofile not found!")
   }
 
-  if (!profile.email) {
-    throw new ApiError(httpStatus.BAD_REQUEST, "Email not found!")
-  }
+ 
 
   const passResetToken = await jwtHelpers.createResetToken({ id: user.id }, config.jwt.secret as string, '50m')
 
   const resetLink: string = config.resetlink + `token=${passResetToken}`
 
   console.log("profile: ", profile)
-  await sendEmail(profile.email, `
+  await sendEmail('nahid@gmail.com', `
       <div>
-        <p>Hi, ${profile.name.firstName}</p>
+        <p>Hi, </p>
         <p>Your password reset link: <a href=${resetLink}>Click Here</a></p>
         <p>Thank you</p>
       </div>
