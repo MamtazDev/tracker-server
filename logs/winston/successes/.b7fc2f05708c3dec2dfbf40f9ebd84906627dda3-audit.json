@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "H:\\React Native\\Tracking-backend\\logs\\winston\\successes\\.b7fc2f05708c3dec2dfbf40f9ebd84906627dda3-audit.json",
+    "files": [
+        {
+            "date": 1728282250209,
+            "name": "H:\\React Native\\Tracking-backend\\logs\\winston\\successes\\phu-2024-07-10-12-success.log",
+            "hash": "490823e4e176128094a7f77e471e91732431b24f6f54aed37417bc56d7312ced"
+        }
+    ],
+    "hashType": "sha256"
+}
