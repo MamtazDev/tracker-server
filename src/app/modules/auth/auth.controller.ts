@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 
 const loginUser = catchAsync(async (req: Request, res: Response) => {
   const { ...loginData } = req.body;
+  console.log("loginData", loginData)
   const result = await AuthService.loginUser(loginData);
   const { refreshToken } = result;
   // set refresh token into cookie
