@@ -10,7 +10,7 @@ import { User } from './user.model';
 import {
   generateAdminId,
   generateFacultyId,
-  generateStudentId,
+  generateStudentId, 
 } from './user.utils';
 
 
